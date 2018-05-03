@@ -10,9 +10,8 @@ int main(){
     int opc;
     int op;
     int clave;
-  
-    
     arbolBB A;
+    
     do{
         cout << "1.Modo demostracion" << endl;
         cout << "2.Modo estadisticas" << endl;
@@ -20,22 +19,17 @@ int main(){
         cin >> opc;
         switch(opc){
             case 1: {
-                    do{
-                        op = demostracion( A, clave,op);
-                    }while(op!=0);
+                do{
+                    op = demostracion( A, clave,op);
+                }while(op!=0);
                 break;
             }
             case 2:{
-                
                 estadistica (A);
-    
-                 break;   
-                
+                break;   
             }// fin case 2
         }
     }while(opc!=0);
-
-
-
+    
 return 0;
 }

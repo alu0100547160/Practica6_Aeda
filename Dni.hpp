@@ -41,7 +41,7 @@ public:
     
     int  get_dni() const{
         
-       int result = dni + letra;
+       int result = dni ;//+ letra;
         return result;
     }
     

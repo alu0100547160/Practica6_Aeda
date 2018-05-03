@@ -72,10 +72,10 @@ void arbolBB::insercion(DNI elemento){
     nodoBB* aux; 
     bool insertado = false;
     aux = busqueda(elemento);
-    if (aux != NULL) {
-        if (is_verbose())
-            cout << endl << "El Dni insertado ya existe en el arbol" << endl << endl;
-    } else {
+    // if (aux != NULL) {
+    //     if (is_verbose())
+    //         cout << endl << "El Dni insertado ya existe en el arbol" << endl << endl;
+    // } else {
         aux = inicio;
         
         if(inicio == NULL){
@@ -107,7 +107,7 @@ void arbolBB::insercion(DNI elemento){
         }
         if (is_verbose())
             mostrar();
-    }
+ //   }
     mostrar();
 }
 
@@ -161,11 +161,11 @@ void arbolBB::eliminacion(DNI elemento){
             delete aux;
             inicio = NULL;
         } else {
-            if (get_dir_padre() == 0) {//hijo por la izquiera
+            if (get_dir_padre() == 0) {//elimino hijo por la izquiera
                 padre = get_nodo_padre();
                 padre -> set_izq(NULL);
             } else {
-                padre = get_nodo_padre();
+                padre = get_nodo_padre(); //elimino hijo por la derecha
                 padre -> set_dch(NULL);
             }
         }            
@@ -179,6 +179,8 @@ void arbolBB::eliminacion(DNI elemento){
                 } else {
                     aux2 = aux -> get_dch();
                     padre -> set_dch(aux2); 
+                  // aux -> set_dch(NULL);
+                    //padre -> set_izq(NULL);
                 }
              // si el nodo a eliminar solo un hijo por la izquierda
             }else if(( aux -> get_dch() == NULL) && (aux -> get_izq() != NULL)){
@@ -188,7 +190,10 @@ void arbolBB::eliminacion(DNI elemento){
                     inicio = aux;
                 } else {
                     aux2 = aux -> get_izq();
-                    padre -> set_izq(aux2);
+                //    padre -> set_izq(aux2);
+                    padre -> set_dch(aux2);
+                  //  aux -> set_izq(NULL);
+                    //padre -> set_dch(aux2);
                 }
             } else {
                 sustituto = aux -> get_izq();
